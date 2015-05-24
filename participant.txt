@@ -2,8 +2,8 @@ List of the participants in the project:
 
 Username   |  Shoesize  | Favorite Drink
 -----------|------------|-----------------
-           |            | 
-           |            | 
+testuser   |            | 
+sokwi      |            | 
            |            |
            |            |
            |            |

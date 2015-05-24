@@ -2,10 +2,8 @@ List of the participants in the project:
 
 Username   |  Shoesize  | Favorite Drink
 -----------|------------|-----------------
-testuser   |            | 
 sokwi      | 47         | Whisky
 testuser   | 41         | Water
-sokwi      |            | 
            |            |
            |            |
            |            |

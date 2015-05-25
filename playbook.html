@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>GIT Playbook</title>
+    <style>
+
+        html, body {
+            font: 15px/1.5 Monaco, MonoSpace;
+            color: #ddca7e;
+            background-color: black;
+            padding-left: 20px;
+        }
+
+        .step {
+            width: 90%;
+            padding: 25px;
+            border-bottom: 2px dashed #9a8297;
+        }
+
+        .part > label {
+            vertical-align: top;
+            display: block;
+            cursor: pointer;
+        }
+
+        .step > label {
+            width: 35%;
+            vertical-align: top;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .part > input, .step > input {
+            display: none;
+        }
+
+        .part input:checked ~ div {
+            display: block;
+        }
+
+        .step input:checked ~ div {
+            display: inline-block;
+        }
+
+        input:not(checked) ~ div {
+            display: none;
+        }
+
+        .part {
+            padding-bottom: 15px;;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="part">
+    <label>Part 1: Setting up GIT</label>
+
+    <div>
+
+        <div class="step">
+            <label>
+                Configure GIT on the local machine
+            </label>
+
+            <div>
+                git config --global user.name "John Doe"<br/>
+                git config --global user.email johndoe@example.com
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Clone the Repository
+            </label>
+
+            <div>
+                cli: git clone [repo url]<br/>
+                idea:
+                <ol>
+                    <li>Checkout project from Version Control</li>
+                    <li>GIT</li>
+                    <li>Enter repo url</li>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="part">
+    <label>Part 2: A simple workflow</label>
+
+    <div>
+        <div class="step">
+            <label>
+                Create a directory called [username]
+            </label>
+
+            <div>
+                n/a
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Create a file called [username]/food.txt
+            </label>
+
+            <div>
+                <p>
+                    Idea will ask if it should add it to GIT and if it should do that automatically in the future.
+                    Please say no to that.
+                </p>
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Add the file to the index
+            </label>
+
+            <div>
+                cli: git add food.txt<br/>
+                idea: VCS Op &gt; Add to VCS
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Commit the file to the repository
+            </label>
+
+            <div>
+                cli: git commit -m "added food"<br/>
+                idea: VCS Op &gt; Commit Changes
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Push the file to the shared repository
+            </label>
+
+            <div>
+                cli: git push origin develop
+                idea: VCS Op &gt; Push
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Pull changes from the others
+            </label>
+
+            <div>
+                cli: git pull <br/>
+                idea: VCS &gt; Update Project
+            </div>
+        </div>
+
+        <div class="step">
+            <label>
+                Part conclusion: What happened here?
+            </label>
+
+            <div>
+                <ol>
+                    <li>Files in GIT have three different states: Modified, Staged, Comitted
+                        <ul>
+                            <li>Modified - Created the file</li>
+                            <li>Staged - git add</li>
+                            <li>Comitted - git commit</li>
+                        </ul>
+                    </li>
+                    <li>Syncronized with central repository
+                        <ul>
+                            <li>git push</li>
+                            <li>git pull</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="part">
+    <label>Part 3: Using Branches</label>
+
+    <div>
+
+
+        <div class="step">
+            <label>See the list of branches </label>
+
+            <div>
+                cli: git branch<br/>
+                idea: VCS Op &gt; Branches
+            </div>
+        </div>
+
+        <div class="step">
+            <label>Create a new branch called [username]_story</label>
+
+            <div>
+                cli:
+                <ul>
+                    <li>git branch [username]_story</li>
+                    <li>git checkout [username]_story</li>
+                    <li>shortcut: git checkout -b [username]_story</li>
+                </ul>
+                <br/>
+                idea: VCS Op &gt; Branches &gt; New Branch &gt; Enter name
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- page footer -->
+<script>
+
+    function addInputAfter(ele, id) {
+        var input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = id;
+        ele.parentNode.insertBefore(input, ele.nextElementSibling);
+    }
+
+    (function () {
+        // at this point, the DOM is ready
+
+        // setup parts
+        var parts = document.querySelectorAll(".part > label");
+        for (var i = 0; i < parts.length; i++) {
+            var id = "part_" + i,
+                    part = parts[i];
+            addInputAfter(part, id);
+            part.setAttribute("for", id);
+            console.log(part);
+        }
+
+        // setup steps
+        var labels = document.querySelectorAll(".step > label");
+        for (var i = 0; i < labels.length; i++) {
+            var id = "step_" + i,
+                    label = labels[i];
+            addInputAfter(label, id);
+            label.setAttribute("for", id);
+        }
+    })();
+</script>
+
+
+</body>
+</html>
